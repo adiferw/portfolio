@@ -319,6 +319,17 @@ footer p {
     opacity: 0.8;
 }
 
+/* Contact icons: force white appearance (works for PNG/SVG via filter) */
+.contact-icon {
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    vertical-align: -0.12em;
+    margin-right: 0.5rem;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+
 /* --- Reszponzivitás --- */
 @media (max-width: 768px) {
     nav ul {
@@ -355,3 +366,5 @@ footer p {
 .dark-mode .toggle-icon {
     filter: invert(1);
 }
+
+/* duplicate removed (handled above) */
