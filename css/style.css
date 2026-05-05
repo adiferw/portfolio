@@ -62,7 +62,41 @@ nav ul {
     list-style: none;
     gap: 2rem;
     margin: 0 auto; /* center the menu */
+    justify-content: center;
+    margin-right: -40px;
 }
+
+/* hamburger (hidden on desktop) */
+.nav-toggle {
+    display: none;
+    border: none;
+    background: transparent;
+    padding: 0.25rem 0.5rem;
+    margin-right: auto; /* keep left on small screens */
+    margin-left: 20px; /* move hamburger 20px inward from left edge */
+    cursor: pointer;
+}
+.hamburger {
+    display: inline-block;
+    width: 22px;
+    height: 2px;
+    background: var(--secondary-color);
+    position: relative;
+    border-radius: 2px;
+}
+.hamburger::before,
+.hamburger::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 22px;
+    height: 2px;
+    background: var(--secondary-color);
+    border-radius: 2px;
+}
+.hamburger::before { top: -7px; }
+.hamburger::after { top: 7px; }
+
 
 .theme-toggle {
     border: none;
@@ -70,6 +104,7 @@ nav ul {
     cursor: pointer;
     padding: 0.25rem;
     margin-left: auto; /* push to right */
+    margin-right: 20px; /* move 20px inward from the right edge */
 }
 .theme-toggle img { display: block; }
 
@@ -94,6 +129,28 @@ nav ul {
     filter: brightness(0) invert(1); /* make icon white on colored background */
 }
 
+/* MOBILE: show hamburger, hide menu by default */
+@media (max-width: 768px) {
+    .nav-toggle { display: inline-block; }
+    nav ul { display: none; flex-direction: column; gap: 1rem; width: 100%; }
+    nav.open ul {
+        display: flex;
+        position: absolute;
+        left: 0;
+        top: 100%;
+        background: var(--header-bg);
+        padding: 1rem 1.25rem;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+    .hamburger, .hamburger::before, .hamburger::after { background: var(--secondary-color); }
+    .theme-toggle { margin-left: 0.5rem; margin-right: 0.5rem; }
+}
+
+/* animate hamburger color in dark mode */
+.dark-mode .hamburger, .dark-mode .hamburger::before, .dark-mode .hamburger::after {
+    background: var(--secondary-color);
+}
+
 nav a {
     text-decoration: none;
     color: var(--secondary-color);
@@ -101,6 +158,12 @@ nav a {
     transition: var(--transition);
     position: relative;
     padding-bottom: 4px;
+}
+
+/* make nav links centerable and increase clickable area */
+nav a {
+    display: inline-block;
+    text-align: center;
 }
 
 /* animated underline */

@@ -26,4 +26,23 @@
 		const isDark = document.body.classList.contains('dark-mode');
 		applyTheme(isDark ? 'light' : 'dark');
 	});
+	// Mobile nav toggle
+	const navToggle = document.getElementById('nav-toggle');
+	const nav = document.querySelector('nav');
+	if(navToggle && nav){
+		navToggle.addEventListener('click', ()=>{
+			const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+			navToggle.setAttribute('aria-expanded', String(!expanded));
+			nav.classList.toggle('open');
+		});
+		// close mobile menu when a nav link is clicked
+		nav.querySelectorAll('a').forEach(a=>{
+			a.addEventListener('click', ()=>{
+				if(nav.classList.contains('open')){
+					nav.classList.remove('open');
+					navToggle.setAttribute('aria-expanded','false');
+				}
+			});
+		});
+	}
 })();
