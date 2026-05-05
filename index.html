@@ -5,33 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ferwágner Ádám | Portfólió</title>
     <link rel="stylesheet" href="css/style.css">
-    <!-- Google Fonts vagy ikonok behívása (opcionális) -->
 </head>
 <body>
 
-    <!-- Navigáció -->
     <header>
         <nav>
             <ul>
                 <li><a href="#home">Bemutatkozás</a></li>
+                <li><a href="#projects">Projektek</a></li>
                 <li><a href="#education">Tanulmányok</a></li>
                 <li><a href="#skills">Készségek</a></li>
                 <li><a href="#contact">Kapcsolat</a></li>
             </ul>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Váltás világos/sötét mód">
+                <img src="assets/images/light-dark/night-mode.png" alt="Téma váltás ikon" width="28" height="28" class="toggle-icon">
+            </button>
         </nav>
     </header>
 
     <main>
-        <!-- Hero / Bemutatkozó szakasz -->
+        <!-- Bemutatkozás -->
         <section id="home" class="hero">
-            <img src="assets/images/profilepic.jpg" alt="Ferwágner Ádám portré" class="profile-pic">
+            <img src="assets/images/profilepic.jpg" alt="Ferwágner Ádám profilképe" class="profile-pic">
             <h1>Ferwágner Ádám</h1>
-            <p class="subtitle">Mérnökinformatikus hallgató</p>
+            <p class="subtitle">Mérnökinformatikus hallgató | Rendszerüzemeltetés & Automatizálás</p>
             <div class="intro-text">
-                <p>Ferwágner Ádám vagyok a Gábor Dénes Egyetem mérnökinformatikus hallgatója. 
-                Bár a szakmai utam elején járok, az informatikához való hozzáállásomat a mérnöki precizitás 
-                és a rendszerszintű gondolkodás határozza meg.</p>
-                <a href="assets/docs/ferwagneradam_cv_HU_2026febr.pdf" class="btn" target="_blank">Önéletrajz Letöltése (PDF)</a>
+                <p>Mérnökinformatika szakos hallgatóként keresek szakmai gyakornoki lehetőséget. Kifejezetten érdekel a <strong>rendszer- és alkalmazásüzemeltetés</strong>, illetve az <strong>automatizálás</strong> területe. Elkötelezett vagyok a szakmai fejlődés mellett, és precíz munkavégzéssel szeretnék hozzájárulni a cég IT folyamataihoz.</p>
+                <!-- Frissítsd a PDF nevét a mappádban lévőre -->
+                <a href="assets/docs/CV - Ferwágner Ádám.pdf" class="btn" target="_blank">Önéletrajz megtekintése</a>
+            </div>
+        </section>
+
+        <!-- Fontosabb projektek - ÚJ SZEKCIÓ -->
+        <section id="projects">
+            <h2>Fontosabb projektjeim</h2>
+            <div class="projects-container">
+                <article class="project-card">
+                    <h3>Adatelemzés - Spotify Top 50 dal</h3>
+                    <p>Adattisztítás és feldolgozás <strong>Pandas</strong> segítségével, vizuális feltáró elemzés és gépi tanulási modell készítése a dalok sikerességének becslésére.</p>
+                    <span class="tag">Python</span> <span class="tag">Pandas</span> <span class="tag">Data Science</span>
+                </article>
+
+                <article class="project-card">
+                    <h3>Virtualizáció - Windows Server 2022</h3>
+                    <p>Teljes virtualizációs környezet kialakítása <strong>Oracle VirtualBox</strong>-ban. A szerver telepítése mellett hálózati konfigurációt és RDP távoli elérést is beállítottam.</p>
+                    <span class="tag">VirtualBox</span> <span class="tag">Windows Server</span> <span class="tag">Networking</span>
+                </article>
             </div>
         </section>
 
@@ -40,60 +59,42 @@
             <h2>Tanulmányok</h2>
             <div class="education-item">
                 <h3>Gábor Dénes Egyetem (2023 - Jelenleg)</h3>
-                <p>Mérnökinformatikus BSc</p>
+                <p><strong>Mérnökinformatika (BSc)</strong></p>
             </div>
             <div class="education-item">
-                <h3>Szent Benedek Szakközépiskola (2019 - 2023)</h3>
-                <p>Gazdaságinformatikus érettségi és számítógépes rendszerkarbantartó képesítés (FEOR 3142/9)</p>
+                <h3>Szent Benedek Iskola, Budaörs (2019 - 2023)</h3>
+                <p><strong>Informatikai rendszer- és alkalmazás-üzemeltető technikus</strong> (Középfok)</p>
             </div>
         </section>
 
-        <!-- Készségek és Technológiák -->
+        <!-- Készségek -->
         <section id="skills">
             <h2>Készségek</h2>
             <div class="skills-grid">
                 <article>
-                    <h3>Üzemeltetés & IT Support</h3>
-                    <ul>
-                        <li>Linux alapok & Windows környezet</li>
-                        <li>Rendszer- és alkalmazás setup</li>
-                        <li>Hibaelhárítás és technikai dokumentáció</li>
-                    </ul>
+                    <h3>Technikai Stack</h3>
+                    <p>Git, SQL, React.js, Python, Linux, Windows, VirtualBox, VMWare, IT biztonság, HTML & CSS.</p>
                 </article>
                 <article>
-                    <h3>Fejlesztés & Adatbázis</h3>
-                    <ul>
-                        <li>SQL (alap lekérdezések)</li>
-                        <li>Python (alap algoritmusok)</li>
-                        <li>JavaScript (React.js alapok)</li>
-                    </ul>
+                    <h3>IT Support & Soft Skills</h3>
+                    <p>Hibaelhárítás, problémaelemzés, technikai dokumentáció. Kiváló kommunikáció és csapatmunka.</p>
                 </article>
                 <article>
-                    <h3>Soft Skills</h3>
-                    <ul>
-                        <li>Precizitás és tanulni vágyás</li>
-                        <li>Kommunikációs készség & Csapatmunka</li>
-                        <li>B2 szintű angol nyelvtudás</li>
-                    </ul>
+                    <h3>Nyelvek & Egyéb</h3>
+                    <p>Magyar (anyanyelv), Angol (B2). Jogosítvány: AM, B1, B kategória.</p>
                 </article>
             </div>
         </section>
-
-        <!-- Hobbik (személyesebb rész) -->
-        <section id="hobbies">
-            <h2>Érdeklődési körök</h2>
-            <p>A technológia mellett a kitartásomat a sportban is fejlesztem: kerékpározás, testépítés és kispályás futball keretein belül.</p>
-        </section>
     </main>
 
-    <!-- Kapcsolati adatok -->
     <footer id="contact">
         <h2>Kapcsolat</h2>
-        <p>E-mail: <a href="mailto:adiferwagner@gmail.com">adiferwagner@gmail.com</a></p>
+        <p>Email: <a href="mailto:adiferwagner@gmail.com">adiferwagner@gmail.com</a></p>
         <p>Telefon: +36 70 534 9252</p>
-        <p>Lakhely: 1116 Budapest, Kisköre utca 12.</p>
-        <p>&copy; 2026 Ferwágner Ádám</p>
+        <p>Helyszín: 1116 Budapest, Magyarország</p>
     </footer>
 
-</body>
-</html>
+        <script src="js/main.js"></script>
+
+    </body>
+    </html>

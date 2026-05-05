@@ -5,6 +5,9 @@
     --bg-light: #f8fafc;
     --text-muted: #64748b;
     --white: #ffffff;
+    --footer-bg: var(--secondary-color);
+    --header-bg: rgba(255, 255, 255, 0.8);
+    --header-border: #e2e8f0;
     --accent: #38bdf8;
     --transition: all 0.3s ease;
 }
@@ -37,20 +40,58 @@ body {
 
 /* --- Navigáció --- */
 header {
-    background: rgba(255, 255, 255, 0.8);
+    background: var(--header-bg);
     backdrop-filter: blur(10px);
     position: sticky;
     top: 0;
     z-index: 1000;
     padding: 1rem 0;
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid var(--header-border);
+}
+
+/* layout nav so icons can sit on the right */
+nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
 }
 
 nav ul {
     display: flex;
-    justify-content: center;
     list-style: none;
     gap: 2rem;
+    margin: 0 auto; /* center the menu */
+}
+
+.theme-toggle {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0.25rem;
+    margin-left: auto; /* push to right */
+}
+.theme-toggle img { display: block; }
+
+/* Hover effect: primary color background and white icon */
+.theme-toggle {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    transition: background var(--transition), transform var(--transition);
+}
+.theme-toggle:hover {
+    background: var(--primary-color);
+    transform: translateY(-2px);
+}
+.theme-toggle img {
+    transition: filter var(--transition) ease, opacity var(--transition) ease;
+}
+.theme-toggle:hover img {
+    filter: brightness(0) invert(1); /* make icon white on colored background */
 }
 
 nav a {
@@ -58,6 +99,30 @@ nav a {
     color: var(--secondary-color);
     font-weight: 500;
     transition: var(--transition);
+    position: relative;
+    padding-bottom: 4px;
+}
+
+/* animated underline */
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
+    background: var(--primary-color);
+    transform-origin: left center;
+    transform: scaleX(0);
+    transition: transform 220ms ease;
+    border-radius: 2px;
+    opacity: 0.95;
+}
+
+nav a:hover::after,
+nav a:focus::after,
+nav a:focus-visible::after {
+    transform: scaleX(1);
 }
 
 nav a:hover {
@@ -72,6 +137,17 @@ section {
     animation: fadeInUp 0.8s ease-out;
 }
 
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1.5rem;
+    border: 4px solid var(--primary-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
 h1, h2, h3 {
     margin-bottom: 1.5rem;
 }
@@ -82,22 +158,16 @@ h2 {
     padding-left: 1rem;
 }
 
-img.profile-pic {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    margin-top: 1.5rem;
-    object-fit: cover;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
 /* --- Hero szekció --- */
 .hero {
     text-align: center;
     padding: 6rem 2rem;
-    background: linear-gradient(135deg, #ffffff 0%, #eff6ff 100%);
     border-radius: 20px;
     margin-top: 2rem;
+}
+
+.hero .intro-text .btn {
+    margin-top: 2.5rem; /* több térköz a fenti szövegtől */
 }
 
 .subtitle {
@@ -150,9 +220,27 @@ img.profile-pic {
     color: var(--text-muted);
 }
 
+/* --- Projektek kártyák --- */
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+.project-card {
+    background: var(--white);
+    padding: 2rem; /* nagyobb belső térköz */
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    margin-bottom: 1.5rem;
+    transition: var(--transition);
+}
+.project-card:hover {
+    box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+}
+
 /* --- Kapcsolat (Lábléc) --- */
 footer {
-    background-color: var(--secondary-color);
+    background-color: var(--footer-bg);
     color: var(--white);
     padding: 4rem 2rem;
     text-align: center;
@@ -176,4 +264,31 @@ footer p {
     }
     
     h1 { font-size: 2rem; }
+}
+
+/* --- Dark mode overrides --- */
+.dark-mode {
+    --primary-color: #7dd3fc;
+    --secondary-color: #e6eef8; /* fő szöveg világos */
+    --bg-light: #071027; /* oldal háttér sötét */
+    --text-muted: #94a3b8;
+    --white: #0b1220; /* kártyák sötét háttere */
+    --accent: #60a5fa;
+    --footer-bg: #071027;
+    /* header in dark mode: reduce light bleed */
+    --header-bg: rgba(7, 16, 39, 0.95);
+    --header-border: rgba(255,255,255,0.04);
+}
+
+/* Explicit h2 color in dark mode for better contrast */
+.dark-mode h2 {
+    color: #ffffff;
+}
+
+.dark-mode p{
+    color: var(--secondary-color);
+}
+
+.dark-mode .toggle-icon {
+    filter: invert(1);
 }
